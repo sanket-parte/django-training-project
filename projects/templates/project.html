@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load project_tags %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'projects/css/project.css' %}">
+    <div class="container">
+        <h2>{{project.title}}</h2></br>
+        {% if project.project_image %}
+            <div class="project-image">
+                <img src="{{project.project_image.url}}"/>
+            </div>
+        {% endif %}
+        <p>{{project.description}}</p></br>
+        {% comment %} {% for tag in project.tags.all %}
+            <span style='border:1px solid gray;padding:5px;'>
+                <a href="{% url 'get-tag' tag.id %}">{{tag}}</a>
+            </span>
+        {% endfor %} {% endcomment %}
+        {% get_project_tags project.id %}
+        </br>
+        </br>
+        <p>Created By {{project.owner}}</p></br>
+    </div>
+{% endblock %}

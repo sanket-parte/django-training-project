@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-left">Profiles</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in profiles %}
+                <tr>
+                    <td><a> {{obj.user}} </a></td>
+                    <td>{{obj.name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

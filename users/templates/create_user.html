@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container form">
+    <form action=""  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                    {% if field.help_text %}
+                    <p class="help"><i>{{ field.help_text|safe }}</i></p>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                    <span class="text-danger">{{ form.non_field_errors }}</span>
+            {% endfor %}
+        <input type='submit' class='btn' value="Regiser User">
+    </form>
+</div>
+{% endblock %}

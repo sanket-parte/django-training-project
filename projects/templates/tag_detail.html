@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load project_tags %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <span class="label label-default">Name:</span>
+        <span class="text-left">{{tag.name}}</span>
+    </div>
+    <div>
+        <span class="label label-default">Remarks:</span>
+        <span>{{tag.remarks}}</span>
+    </div>
+    <div>
+        <span class="label label-default">Is Active:</span>
+        <span>{{tag.active|convert_boolean_field}}</span>
+    </div>
+    <div>
+        <span class="label label-default">Created At:</span>
+        <span>{{tag.created_at}}</span>
+    </div>
+</div>
+{% endblock %}

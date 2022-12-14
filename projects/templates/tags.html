@@ -1,0 +1,7 @@
+
+<p>{{project.title}}</p>
+{% for tag in tags %}
+    <span style='border:1px solid gray;padding:5px;'>
+        <a href="{% url 'get-tag' tag.id %}">{{tag}}</a>
+    </span>
+{% endfor %}

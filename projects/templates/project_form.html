@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+{% comment %} <script src="{% static 'projects/js/project.js' %}" defer></script> {% endcomment %}
+{% comment %} <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> {% endcomment %}
+<link rel="stylesheet" href="{% static 'projects/css/project_form.css' %}">
+<form action="{% url 'create-project' %}" method="post" class="form-control" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+            {% for error in field.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            <span class="text-danger">{{ form.non_field_errors }}</span>
+        </span>
+    {% endfor %}
+    <input id="project-submit" type='submit' value='Submit'/>
+</form>
+{% endblock %}

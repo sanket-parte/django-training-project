@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% comment %} <a class="navbar-brand" href="{% url 'get-projects' %}">Django Training Project</a> {% endcomment %}
+    <div class="logo"> 
+      <img src="{% static 'projects/images/logo.jpg' %}" />
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'get-projects' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create-project' %}">Create Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'get-profiles' %}">Profiles</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link float-right" href="{% url 'user-logout' %}">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link float-right" href="{% url 'user-login' %}">Login</a>
+          </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create-user' %}">Create User</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
